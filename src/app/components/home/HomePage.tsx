@@ -190,7 +190,7 @@ export default function HomePage() {
                   </div>
                   <CardTitle>Admin Portal</CardTitle>
                   <CardDescription>
-                    Manage users, roles, system settings, and clinic operations
+                    Manage users, roles, system settings, and overall clinic operations
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -207,19 +207,12 @@ export default function HomePage() {
       {/* Services Section */}
       <section id="services" className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl text-gray-900 mb-3">Comprehensive Healthcare Services</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              We offer a full range of medical services delivered with care and expertise
-            </p>
-          </div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
             {/* Service 1 */}
-            <Card className="border-gray-200">
-              <CardHeader>
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-3">
-                  <Stethoscope className="w-6 h-6 text-blue-600" />
+            <Card className="border-gray-200 min-h-[280px] transition-all hover:shadow-lg hover:-translate-y-1">
+              <CardHeader className="p-8 flex flex-col justify-center h-full">
+                <div className="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center mb-5">
+                  <Stethoscope className="w-7 h-7 text-blue-600" />
                 </div>
                 <CardTitle className="text-lg">General Consultation</CardTitle>
                 <CardDescription>
@@ -229,10 +222,10 @@ export default function HomePage() {
             </Card>
 
             {/* Service 2 */}
-            <Card className="border-gray-200">
-              <CardHeader>
-                <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-3">
-                  <Microscope className="w-6 h-6 text-purple-600" />
+            <Card className="border-gray-200 min-h-[280px] transition-all hover:shadow-lg hover:-translate-y-1">
+              <CardHeader className="p-8 flex flex-col justify-center h-full">
+                <div className="w-16 h-16 bg-purple-100 rounded-lg flex items-center justify-center mb-5">
+                  <Microscope className="w-7 h-7 text-purple-600" />
                 </div>
                 <CardTitle className="text-lg">Diagnostics & Lab Tests</CardTitle>
                 <CardDescription>
@@ -242,10 +235,10 @@ export default function HomePage() {
             </Card>
 
             {/* Service 3 */}
-            <Card className="border-gray-200">
-              <CardHeader>
-                <div className="w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center mb-3">
-                  <Pill className="w-6 h-6 text-amber-600" />
+            <Card className="border-gray-200 min-h-[280px] transition-all hover:shadow-lg hover:-translate-y-1">
+              <CardHeader className="p-8 flex flex-col justify-center h-full">
+                <div className="w-16 h-16 bg-amber-100 rounded-lg flex items-center justify-center mb-5">
+                  <Pill className="w-7 h-7 text-amber-600" />
                 </div>
                 <CardTitle className="text-lg">Pharmacy Services</CardTitle>
                 <CardDescription>
@@ -255,10 +248,10 @@ export default function HomePage() {
             </Card>
 
             {/* Service 4 */}
-            <Card className="border-gray-200">
-              <CardHeader>
-                <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-3">
-                  <Ambulance className="w-6 h-6 text-red-600" />
+            <Card className="border-gray-200 min-h-[280px] transition-all hover:shadow-lg hover:-translate-y-1">
+              <CardHeader className="p-8 flex flex-col justify-center h-full">
+                <div className="w-16 h-16 bg-red-100 rounded-lg flex items-center justify-center mb-5">
+                  <Ambulance className="w-7 h-7 text-red-600" />
                 </div>
                 <CardTitle className="text-lg">Emergency Care</CardTitle>
                 <CardDescription>
@@ -268,10 +261,10 @@ export default function HomePage() {
             </Card>
 
             {/* Service 5 */}
-            <Card className="border-gray-200">
-              <CardHeader>
-                <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-3">
-                  <User className="w-6 h-6 text-green-600" />
+            <Card className="border-gray-200 min-h-[280px] transition-all hover:shadow-lg hover:-translate-y-1">
+              <CardHeader className="p-8 flex flex-col justify-center h-full">
+                <div className="w-16 h-16 bg-green-100 rounded-lg flex items-center justify-center mb-5">
+                  <User className="w-7 h-7 text-green-600" />
                 </div>
                 <CardTitle className="text-lg">Specialist Doctors</CardTitle>
                 <CardDescription>
@@ -281,10 +274,10 @@ export default function HomePage() {
             </Card>
 
             {/* Service 6 */}
-            <Card className="border-gray-200">
-              <CardHeader>
-                <div className="w-12 h-12 bg-teal-100 rounded-lg flex items-center justify-center mb-3">
-                  <Activity className="w-6 h-6 text-teal-600" />
+            <Card className="border-gray-200 min-h-[280px] transition-all hover:shadow-lg hover:-translate-y-1">
+              <CardHeader className="p-8 flex flex-col justify-center h-full">
+                <div className="w-16 h-16 bg-teal-100 rounded-lg flex items-center justify-center mb-5">
+                  <Activity className="w-7 h-7 text-teal-600" />
                 </div>
                 <CardTitle className="text-lg">Health Checkups</CardTitle>
                 <CardDescription>
@@ -293,6 +286,7 @@ export default function HomePage() {
               </CardHeader>
             </Card>
           </div>
+
         </div>
       </section>
 
