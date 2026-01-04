@@ -3,6 +3,7 @@ import { useState } from 'react';
 import HomePage from './components/home/HomePage';
 import LoginScreen from './components/auth/LoginScreen';
 import ForgotPassword from './components/auth/ForgotPassword';
+import NewUserRegistration from './components/patient/NewUserRegistration';
 import PatientPortal from './components/patient/PatientPortal';
 import StaffDashboard from './components/staff/StaffDashboard';
 import DoctorDashboard from './components/doctor/DoctorDashboard';
@@ -49,6 +50,10 @@ function App() {
         <Route 
           path="/forgot-password" 
           element={<ForgotPassword />} 
+        />
+        <Route 
+          path="/register" 
+          element={<NewUserRegistration />} 
         />
         <Route 
           path="/patient/*" 

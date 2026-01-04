@@ -1,9 +1,11 @@
 import { ReactNode, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Bell, Search, User, LogOut, Menu, X } from 'lucide-react';
+import { Bell, Search, User, Menu, X, Activity } from 'lucide-react';
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
 import { Badge } from '../ui/badge';
+import LogoutButton from './LogoutButton';
+import SessionTimeout from './SessionTimeout';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -39,6 +41,9 @@ export default function DashboardLayout({
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Session Timeout */}
+      <SessionTimeout onLogout={onLogout} />
+
       {/* Top Bar */}
       <header className="bg-white border-b border-gray-200 sticky top-0 z-40">
         <div className="flex items-center justify-between h-16 px-4">
@@ -52,14 +57,12 @@ export default function DashboardLayout({
             >
               {sidebarOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </Button>
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-gray-900 rounded flex items-center justify-center">
-                <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                </svg>
+            <Link to="/" className="flex items-center gap-2">
+              <div className="w-8 h-8 bg-blue-600 rounded flex items-center justify-center">
+                <Activity className="w-5 h-5 text-white" />
               </div>
-              <span className="hidden sm:block text-sm text-gray-900">Clinic CMS</span>
-            </div>
+              <span className="hidden sm:block text-sm text-gray-900">HealthCare CMS</span>
+            </Link>
           </div>
 
           {/* Center: Search */}
@@ -73,7 +76,7 @@ export default function DashboardLayout({
             </div>
           </div>
 
-          {/* Right: Notifications and Profile */}
+          {/* Right: Notifications, Profile, and Logout */}
           <div className="flex items-center gap-2">
             <Button variant="ghost" size="icon" className="relative">
               <Bell className="h-5 w-5" />
@@ -99,13 +102,11 @@ export default function DashboardLayout({
                 <DropdownMenuSeparator />
                 <DropdownMenuItem>Profile Settings</DropdownMenuItem>
                 <DropdownMenuItem>Preferences</DropdownMenuItem>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem onClick={onLogout} className="text-red-600">
-                  <LogOut className="mr-2 h-4 w-4" />
-                  Sign Out
-                </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
+
+            {/* Logout Button */}
+            <LogoutButton onLogout={onLogout} userName={userName} />
           </div>
         </div>
       </header>

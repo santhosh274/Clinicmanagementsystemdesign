@@ -43,11 +43,11 @@ export default function HomePage() {
 
             {/* CTA Buttons */}
             <div className="flex items-center gap-3">
-              <Link to="/login">
-                <Button variant="outline">Login</Button>
+              <Link to="/register">
+                <Button variant="outline">New User</Button>
               </Link>
-              <Link to="/login?role=patient">
-                <Button className="bg-blue-600 hover:bg-blue-700 text-white">Book Appointment</Button>
+              <Link to="/login">
+                <Button className="bg-blue-600 hover:bg-blue-700 text-white">Login</Button>
               </Link>
             </div>
           </div>
