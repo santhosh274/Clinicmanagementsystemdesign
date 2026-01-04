@@ -1,15 +1,20 @@
 import { useState } from 'react';
+import { Link, useSearchParams } from 'react-router-dom';
 import { UserRole } from '../../App';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../ui/card';
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
 import { Label } from '../ui/label';
+import { Activity, ArrowLeft } from 'lucide-react';
 
 interface LoginScreenProps {
   onLogin: (role: UserRole, name: string) => void;
 }
 
 export default function LoginScreen({ onLogin }: LoginScreenProps) {
+  const [searchParams] = useSearchParams();
+  const preselectedRole = searchParams.get('role') as UserRole | null;
+  
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -17,20 +22,35 @@ export default function LoginScreen({ onLogin }: LoginScreenProps) {
     onLogin(role, name);
   };
 
+  const getRoleName = (role: UserRole | null) => {
+    if (!role) return null;
+    const roleNames: Record<string, string> = {
+      patient: 'Patient',
+      doctor: 'Doctor',
+      staff: 'Staff',
+      lab: 'Lab Technician',
+      pharmacy: 'Pharmacist',
+      admin: 'Administrator',
+    };
+    return roleNames[role] || null;
+  };
+
   return (
     <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
       <div className="w-full max-w-md space-y-8">
         {/* Logo and Header */}
         <div className="text-center space-y-2">
-          <div className="flex justify-center">
-            <div className="w-16 h-16 bg-gray-900 rounded-lg flex items-center justify-center">
-              <svg className="w-10 h-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-              </svg>
+          <Link to="/" className="inline-flex items-center gap-3 mb-4">
+            <div className="w-16 h-16 bg-blue-600 rounded-lg flex items-center justify-center">
+              <Activity className="w-10 h-10 text-white" />
             </div>
-          </div>
-          <h1 className="text-3xl text-gray-900">Clinic Management System</h1>
-          <p className="text-sm text-gray-600">Access varies by role</p>
+          </Link>
+          <h1 className="text-3xl text-gray-900">HealthCare CMS</h1>
+          {preselectedRole ? (
+            <p className="text-sm text-gray-600">{getRoleName(preselectedRole)} Portal Login</p>
+          ) : (
+            <p className="text-sm text-gray-600">Access varies by role</p>
+          )}
         </div>
 
         {/* Login Form */}
@@ -51,7 +71,12 @@ export default function LoginScreen({ onLogin }: LoginScreenProps) {
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="password">Password</Label>
+              <div className="flex justify-between items-center">
+                <Label htmlFor="password">Password</Label>
+                <Link to="/forgot-password" className="text-sm text-blue-600 hover:underline">
+                  Forgot Password?
+                </Link>
+              </div>
               <Input 
                 id="password" 
                 type="password"
@@ -59,9 +84,18 @@ export default function LoginScreen({ onLogin }: LoginScreenProps) {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
-            <Button className="w-full" disabled>
+            <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white" disabled>
               Sign In
             </Button>
+            
+            {preselectedRole && (
+              <Link to="/">
+                <Button variant="ghost" className="w-full">
+                  <ArrowLeft className="w-4 h-4 mr-2" />
+                  Back to Home
+                </Button>
+              </Link>
+            )}
           </CardContent>
         </Card>
 

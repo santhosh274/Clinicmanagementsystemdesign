@@ -1,6 +1,8 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { useState } from 'react';
+import HomePage from './components/home/HomePage';
 import LoginScreen from './components/auth/LoginScreen';
+import ForgotPassword from './components/auth/ForgotPassword';
 import PatientPortal from './components/patient/PatientPortal';
 import StaffDashboard from './components/staff/StaffDashboard';
 import DoctorDashboard from './components/doctor/DoctorDashboard';
@@ -30,9 +32,23 @@ function App() {
             currentUser ? (
               <Navigate to={`/${currentUser.role}`} replace />
             ) : (
+              <HomePage />
+            )
+          } 
+        />
+        <Route 
+          path="/login" 
+          element={
+            currentUser ? (
+              <Navigate to={`/${currentUser.role}`} replace />
+            ) : (
               <LoginScreen onLogin={handleLogin} />
             )
           } 
+        />
+        <Route 
+          path="/forgot-password" 
+          element={<ForgotPassword />} 
         />
         <Route 
           path="/patient/*" 
